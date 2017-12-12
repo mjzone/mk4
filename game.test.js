@@ -15,11 +15,7 @@ describe("Test warriors isolated", () => {
     spineArmor = undefined;
     spineChain = undefined;
     scorpion = undefined;
-  })
-
-  // it("spineArmor should be an instance of Armor", () => {
-  //   spineArmor
-  // })
+  });
 
   it("spineArmor name should be 'Spine Armor'", () => {
     spineArmor.name.should.be.equal("Spine Armor");
