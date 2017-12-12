@@ -106,4 +106,4 @@ fight = () => {
 setUpWarriors();
 fight();
 
-module.exports = {Warrior,Armor,Weapon, attack,getWarriors}
+module.exports = {Warrior,Armor,Weapon, attack,getWarriors,setUpWarriors,fight}

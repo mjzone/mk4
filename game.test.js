@@ -2,7 +2,7 @@ expect = require("chai").expect;
 should = require("chai").should();
 _ = require("lodash");
 
-const {Warrior, Armor,Weapon,attack,getWarriors} = require('./game');
+const {Warrior, Armor,Weapon,attack,getWarriors,setUpWarriors,fight} = require('./game');
 
 /*describe("Test", () => {
   it("true to be true", () => {
@@ -22,10 +22,17 @@ describe("Creating warrior in isolated environment", () => {
   var Scorpion;
   var spineArmor;
   var spineChain;
+  var leatherArmor;
+  var sword;
+
   beforeEach(function (){
     spineArmor = new Armor("Spine Armor", 6);
     spineChain = new Weapon("Spine Chain", 5);
     Scorpion = new Warrior("Scorpion", 7, 7, [spineArmor, spineChain]);
+
+    leatherArmor = new Armor("Leather Armor", 3);
+     sword = new Weapon("Chang Sword", 6);
+    LiuKang = new Warrior("Lui Kang", 6, 8, [leatherArmor, sword]);
   });
 
   it("Warrior name should be Scorpian", () => {
@@ -53,6 +60,12 @@ describe("Creating warrior in isolated environment", () => {
   it('Remove gear should calculate bonus and return 0',() =>{
     Scorpion.removeGear();
     Scorpion.armorBonus.should.equal(0);
+  });
+
+  it('Fight between scorpian and luikan',() =>{
+    setUpWarriors();
+    fight();
+    
   });
 
   afterEach(function(){
