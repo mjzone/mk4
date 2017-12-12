@@ -2,11 +2,11 @@ _ = require("lodash");
 var Scorpion;
 var LiuKang;
 
-function attack(enemy,rolldiceTimes,rolldiceType,strength,clampLower,clampHigher,powerStatic) {
-  var roll = Warrior.rollDice(rolldiceTimes, rolldiceType);
+function attack(rollDiceFunc,strength,enemyBonus,enemySkill) {
+  var roll = rollDiceFunc(1, 20);
   roll += strength;
-  var warriorPoints = _.clamp(roll, clampLower, clampHigher);
-  var enemyPower = powerStatic + enemy.armorBonus + enemy.skill;
+  var warriorPoints = _.clamp(roll, 1, 25);
+  var enemyPower = 10 + enemyBonus + enemySkill;
   return warriorPoints >= enemyPower;
 }
 
@@ -100,4 +100,4 @@ fight = () => {
 setUpWarriors();
 fight();
 
-module.exports = {Warrior,Armor,Weapon}
+module.exports = {Warrior,Armor,Weapon, attack}

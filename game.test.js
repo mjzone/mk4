@@ -2,7 +2,7 @@ expect = require("chai").expect;
 should = require("chai").should();
 _ = require("lodash");
 
-const {Warrior, Armor,Weapon} = require('./game');
+const {Warrior, Armor,Weapon,attack} = require('./game');
 
 /*describe("Test", () => {
   it("true to be true", () => {
@@ -50,4 +50,19 @@ describe("Creating warrior in isolated environment", () => {
   });
  
 });
+
+describe("Testing Attack function", () => {
+
+  var rollDice;
+  beforeEach(function (){
+    rollDice = function(){
+      return 20;
+    }
+  });  
+  it("Attack function should return true", () => {
+    var val = attack(rollDice,10,5,5);
+    val.should.equal(true);
+  });
+});
+
 
