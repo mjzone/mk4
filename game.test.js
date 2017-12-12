@@ -62,7 +62,7 @@ describe("Test warriors isolated", () => {
     newArmor = new Armor("New Armor", 6);
     // scorpion.addGear(newArmor);
     scorpion.removeGear(spineArmor);
-    _.find(scorpion.gear, spineArmor).should.be.equal(undefined);
+    scorpion.gear.length.should.be.equal(1);
   })
 });
 
