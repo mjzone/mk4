@@ -2,11 +2,11 @@ _ = require("lodash");
 var Scorpion;
 var LiuKang;
 
-function testableAttatck(self, enemy) {
-  var roll = self.rollDice(1, 20);
-  roll += self.strength;
+function testableAttatck(rollFunc, warriorStrength, enemyBonus, enemySkill) {
+  var roll = rollFunc(1, 20);
+  roll += warriorStrength;
   var selfPoints = _.clamp(roll, 1, 25);
-  var enemyPower = 10 + enemy.armorBonus + enemy.skill;
+  var enemyPower = 10 + enemyBonus + enemySkill;
   return selfPoints >= enemyPower;
 }
 
