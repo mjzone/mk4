@@ -1,7 +1,7 @@
 expect = require("chai").expect;
 should = require("chai").should();
 _ = require("lodash");
-const { Warrior, Armor, Weapon, testableAttatck } = require("./game");
+const { Warrior, Armor, Weapon, testableAttatck, getWarriors } = require("./game");
 
 describe("Test warriors isolated", () => {
   var spineArmor, spineChain, scorpion;
@@ -52,3 +52,13 @@ describe("Test warriors isolated", () => {
     testableAttatck(randomMock, 20, 1, 1).should.be.true;
   })
 });
+
+describe("Warrior List", () => {
+  it("list should have 7 warriors", (done) => {
+    getWarriors((err, res) => {
+      if(err) throw err;
+      res.length.should.be.equal(7);
+      done();
+    });
+  })
+})

@@ -96,14 +96,16 @@ fight = () => {
   }
 }
 
-// setUpWarriors();
-// fight();
-
-getScorpion = () => Scorpion
+const getWarriors = (callback) => {
+  setTimeout(() => {
+    callback(null, require("./database.json"));
+  }, 50);
+}
 
 module.exports = {
   Warrior,
   Armor,
   Weapon,
-  testableAttatck
+  testableAttatck,
+  getWarriors
 }
