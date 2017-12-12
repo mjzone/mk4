@@ -2,16 +2,18 @@ _ = require("lodash");
 var Scorpion;
 var LiuKang;
 
-const attack = (rollDiceFunc, warriorStrength, enemyBonus, enemySkill )=> {
-  var roll = rollDiceFunc(1, 20);
-  roll += warriorStrength;
+const attack = (rollDiceFn, heroStrength, enemyArmor, enemySkill ) => {
+  var roll = rollDiceFn(1, 20);
+  roll += heroStrength;
+  // business logics
   var warriorPoints = _.clamp(roll, 1, 25);
-  var enemyPoints = 10 + enemyBonus + enemySkill;
+
+  var enemyPoints = 10 + enemyArmor + enemySkill;
   return {
-    win: warriorPoints >= enemyPoints,
+    win: warriorPoints > enemyPoints,
     warriorPoints,
     enemyPoints
-  };
+  }
 }
 
 const getWarriors = (callback) => {
@@ -27,7 +29,7 @@ class Warrior {
     this.skill = skill;
     this.gear = gear;
     this.calculateBonus();
-    // this.armorBonus = 0;
+    //this.armorBonus = 0;
   }
 
   static rollDice(times, type) {
@@ -110,9 +112,11 @@ setUpWarriors();
 fight();
 
 getScorpion = () => Scorpion;
+getLuiKang = () => LiuKang;
 
 module.exports = {
   getScorpion,
+  getLuiKang,
   Warrior,
   Armor,
   Weapon,
