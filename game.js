@@ -5,9 +5,9 @@ var LiuKang;
 function testableAttatck(rollFunc, warriorStrength, enemyBonus, enemySkill) {
   var roll = rollFunc(1, 20);
   roll += warriorStrength;
-  var selfPoints = _.clamp(roll, 1, 25);
+  var warriorPoints = _.clamp(roll, 1, 25);
   var enemyPower = 10 + enemyBonus + enemySkill;
-  return selfPoints >= enemyPower;
+  return warriorPoints >= enemyPower;
 }
 
 class Warrior {
@@ -104,5 +104,6 @@ getScorpion = () => Scorpion
 module.exports = {
   Warrior,
   Armor,
-  Weapon
+  Weapon,
+  testableAttatck
 }

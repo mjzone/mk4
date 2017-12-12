@@ -1,7 +1,7 @@
 expect = require("chai").expect;
 should = require("chai").should();
 _ = require("lodash");
-const { Warrior, Armor, Weapon } = require("./game");
+const { Warrior, Armor, Weapon, testableAttatck } = require("./game");
 
 describe("Test warriors isolated", () => {
   var spineArmor, spineChain, scorpion;
@@ -45,4 +45,10 @@ describe("Test warriors isolated", () => {
     _.find(scorpion.gear, spineArmor).should.be.instanceOf(Armor);
     _.find(scorpion.gear, spineChain).should.be.instanceOf(Weapon);
   });
+
+
+  it("Warrior should win", () => {
+    function randomMock(times, type) { return 0; }
+    testableAttatck(randomMock, 20, 1, 1).should.be.true;
+  })
 });
