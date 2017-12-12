@@ -2,11 +2,11 @@ _ = require("lodash");
 var Scorpion;
 var LiuKang;
 
-function attack(enemy,rolldiceTimes,rolldiceType,strength,clampLower,clampHigher) {
+function attack(enemy,rolldiceTimes,rolldiceType,strength,clampLower,clampHigher,powerStatic) {
   var roll = Warrior.rollDice(rolldiceTimes, rolldiceType);
   roll += strength;
   var warriorPoints = _.clamp(roll, clampLower, clampHigher);
-  var enemyPower = 10 + enemy.armorBonus + enemy.skill;
+  var enemyPower = powerStatic + enemy.armorBonus + enemy.skill;
   return warriorPoints >= enemyPower;
 }
 
