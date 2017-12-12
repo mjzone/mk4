@@ -2,6 +2,14 @@ _ = require("lodash");
 var Scorpion;
 var LiuKang;
 
+  const attack = (enemyArmor, enemySkill, warriorStrength, rollDiceFunc) => {
+    var roll= rollDiceFunc(1,20);
+    roll += warriorStrength;
+    var warriorPoints = _.clamp(roll, 1, 25);
+    var enemyPower = 10 + enemyArmor + enemySkill;
+    return warriorPoints >= enemyPower;
+  }
+
 class Warrior {
   constructor(name, strength, skill, gear) {
     this.name = name;
@@ -9,7 +17,7 @@ class Warrior {
     this.skill = skill;
     this.gear = gear;
     this.calculateBonus();
-    this.armorBonus = 0;
+    // this.armorBonus = 0;
   }
 
   static rollDice(times, type) {
@@ -90,3 +98,11 @@ fight = () => {
 
 setUpWarriors();
 fight();
+
+module.exports = {
+  Scorpion,
+  Warrior,
+  Armor,
+  Weapon,
+  attack
+}
