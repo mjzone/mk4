@@ -51,6 +51,19 @@ describe("Test warriors isolated", () => {
     function randomMock(times, type) { return 0; }
     testableAttatck(randomMock, 20, 1, 1).should.be.true;
   })
+
+  it("Warrior should attach Armor", () => {
+    newArmor = new Armor("New Armor", 6);
+    scorpion.addGear(newArmor);
+    _.find(scorpion.gear, spineArmor).should.be.instanceOf(Armor);
+  })
+
+  it("Warrior should detach Armor", () => {
+    newArmor = new Armor("New Armor", 6);
+    // scorpion.addGear(newArmor);
+    scorpion.removeGear(spineArmor);
+    _.find(scorpion.gear, spineArmor).should.be.equal(undefined);
+  })
 });
 
 describe("Warrior List", () => {
