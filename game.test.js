@@ -2,7 +2,7 @@ expect = require("chai").expect;
 should = require("chai").should();
 _ = require("lodash");
 
-const {Warrior, Armor,Weapon,attack} = require('./game');
+const {Warrior, Armor,Weapon,attack,getWarriors} = require('./game');
 
 /*describe("Test", () => {
   it("true to be true", () => {
@@ -64,5 +64,16 @@ describe("Testing Attack function", () => {
     val.should.equal(true);
   });
 });
+
+describe("Testing database.json", (done) => {
+
+    it("Database json list count should return 11", () => {
+      getWarriors(function(error,data){
+        data.length.should.equal(11);
+        done();
+      });
+    });
+  });
+  
 
 

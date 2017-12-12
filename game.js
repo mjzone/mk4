@@ -10,6 +10,11 @@ function attack(rollDiceFunc,strength,enemyBonus,enemySkill) {
   return warriorPoints >= enemyPower;
 }
 
+const getWarriors = (callback) => {
+  setTimeout(function(){
+    callback(null,require('./database.json'));
+  },50);
+}
 
 class Warrior {
   constructor(name, strength, skill, gear) {
@@ -97,7 +102,8 @@ fight = () => {
   }
 }
 
+
 setUpWarriors();
 fight();
 
-module.exports = {Warrior,Armor,Weapon, attack}
+module.exports = {Warrior,Armor,Weapon, attack,getWarriors}
