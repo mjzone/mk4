@@ -67,7 +67,7 @@ describe("Testing Attack function", () => {
 
 describe("Testing database.json", () => {
 
-    it("Database json list count should return 11", (done) => {
+    it("Database json list count should return 7", (done) => {
       getWarriors(function(error,data){
         data.length.should.equal(7);
         done();
