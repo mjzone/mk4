@@ -9,7 +9,7 @@ class Warrior {
     this.skill = skill;
     this.gear = gear;
     this.calculateBonus();
-    this.armorBonus = 0;
+    //this.armorBonus = 0;
   }
 
   static rollDice(times, type) {
@@ -91,4 +91,4 @@ fight = () => {
 setUpWarriors();
 fight();
 
-module.exports = {Warrior}
+module.exports = {Warrior,Armor,Weapon}
