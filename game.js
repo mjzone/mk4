@@ -91,9 +91,8 @@ fight = () => {
 // setUpWarriors();
 // fight();
 
+getScorpion = () => Scorpion
+
 module.exports = {
-  setUpWarriors,
-  Warrior,
-  Armor,
-  Weapon
+  Warrior
 }
