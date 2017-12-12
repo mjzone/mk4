@@ -45,6 +45,16 @@ describe("Creating warrior in isolated environment", () => {
     Scorpion.gear[1].should.equal(spineChain);
   });
 
+  it('Add gear should calculate bonus and return 12',() =>{
+    Scorpion.addGear(spineArmor);
+    Scorpion.armorBonus.should.equal(12);
+  });
+
+  it('Remove gear should calculate bonus and return 0',() =>{
+    Scorpion.removeGear();
+    Scorpion.armorBonus.should.equal(0);
+  });
+
   afterEach(function(){
     Scorpian = undefined;
   });
@@ -74,6 +84,8 @@ describe("Testing database.json", () => {
       });
     });
   });
+
+
   
 
 
