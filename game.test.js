@@ -65,11 +65,11 @@ describe("Testing Attack function", () => {
   });
 });
 
-describe("Testing database.json", (done) => {
+describe("Testing database.json", () => {
 
-    it("Database json list count should return 11", () => {
+    it("Database json list count should return 11", (done) => {
       getWarriors(function(error,data){
-        data.length.should.equal(11);
+        data.length.should.equal(7);
         done();
       });
     });
