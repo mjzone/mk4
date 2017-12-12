@@ -2,6 +2,14 @@ _ = require("lodash");
 var Scorpion;
 var LiuKang;
 
+function testableAttatck(self, enemy) {
+  var roll = self.rollDice(1, 20);
+  roll += self.strength;
+  var selfPoints = _.clamp(roll, 1, 25);
+  var enemyPower = 10 + enemy.armorBonus + enemy.skill;
+  return selfPoints >= enemyPower;
+}
+
 class Warrior {
   constructor(name, strength, skill, gear) {
     this.name = name;
