@@ -45,6 +45,9 @@ describe("Creating warrior in isolated environment", () => {
     Scorpion.gear[1].should.equal(spineChain);
   });
 
+  afterEach(function(){
+    Scorpian = undefined;
+  });
  
 });
 

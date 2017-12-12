@@ -2,6 +2,15 @@ _ = require("lodash");
 var Scorpion;
 var LiuKang;
 
+function attack(enemy,rolldiceTimes,rolldiceType,strength,clampLower,clampHigher) {
+  var roll = Warrior.rollDice(rolldiceTimes, rolldiceType);
+  roll += strength;
+  var warriorPoints = _.clamp(roll, clampLower, clampHigher);
+  var enemyPower = 10 + enemy.armorBonus + enemy.skill;
+  return warriorPoints >= enemyPower;
+}
+
+
 class Warrior {
   constructor(name, strength, skill, gear) {
     this.name = name;
