@@ -2,6 +2,24 @@ _ = require("lodash");
 var Scorpion;
 var LiuKang;
 
+const attack = (rollDiceFunc, warriorStrength, enemyBonus, enemySkill )=> {
+  var roll = rollDiceFunc(1, 20);
+  roll += warriorStrength;
+  var warriorPoints = _.clamp(roll, 1, 25);
+  var enemyPoints = 10 + enemyBonus + enemySkill;
+  return {
+    win: warriorPoints >= enemyPoints,
+    warriorPoints,
+    enemyPoints
+  };
+}
+
+const getWarriors = (callback) => {
+  setTimeout(function() {
+    callback(null, require("./database.json"));
+  }, 50);
+};
+
 class Warrior {
   constructor(name, strength, skill, gear) {
     this.name = name;
@@ -9,7 +27,7 @@ class Warrior {
     this.skill = skill;
     this.gear = gear;
     this.calculateBonus();
-    this.armorBonus = 0;
+    // this.armorBonus = 0;
   }
 
   static rollDice(times, type) {
@@ -90,3 +108,14 @@ fight = () => {
 
 setUpWarriors();
 fight();
+
+getScorpion = () => Scorpion;
+
+module.exports = {
+  getScorpion,
+  Warrior,
+  Armor,
+  Weapon,
+  attack,
+  getWarriors
+}
